@@ -1,0 +1,7 @@
+---
+name: statsite
+templates:
+  bin/statsite_ctl: bin/statsite_ctl
+packages:
+- statsite
+

@@ -1,0 +1,8 @@
+---
+final_name: statsite
+blobstore:
+  provider: local
+  #provider: s3
+  options:
+    blobstore_path: /tmp 
+    #bucket_name: statsite-boshrelease
