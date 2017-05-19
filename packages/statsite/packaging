@@ -1,5 +1,11 @@
 # abort script on any command that exits with a non zero value
 set -e -x
-
-cp statsite * ${BOSH_INSTALL_TARGET}
+sudo apt-get -y update 
+sudo apt-get -y install dh-autoreconf
+tar -zxvf statsite.tgz
+cd statsite
+./autogen.sh
+./configure
+make
+cp statsite ${BOSH_INSTALL_TARGET}
 

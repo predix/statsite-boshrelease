@@ -8,24 +8,27 @@ export LANG=en_US.UTF-8
 CONFIG_DIR=/var/vcap/jobs/statsite/config
 PIDFILE=/var/vcap/sys/run/statsite/statsite.pid
 PID_DIR=/var/vcap/sys/run/statsite/
+STATSITE_BINARY=/var/vcap/packages/statsite/statsite
 
-mkdir -p $PID_DIR
-chown -R vcap:vcap $PID_DIR 
 
 case $1 in
 
   start)
 
+
     if [[ -f $PIDFILE ]]; then
             kill -9 `cat $PIDFILE`
     fi
 
-    exec /var/vcap/packages/statsite/bin/statsite 
+    mkdir -p $PID_DIR
+    chown -R vcap:vcap $PID_DIR
+
+    exec $STATSITE_BINARY 
     #exec ./statsite -f $JOB_DIR/config/statsite.conf \
          #>>$LOG_DIR/$JOB_NAME.log
 
     STATSITE_PID=`ps -ef | grep "statsite" | grep -v grep | awk '{print $2}' `
-        echo $STATSITE_PID > $PIDFILE
+    echo $STATSITE_PID > $PIDFILE
 
     ;;
 
