@@ -2,6 +2,9 @@
 name: statsite
 templates:
   bin/statsite_ctl: bin/statsite_ctl
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  data/properties.sh.erb: data/properties.sh
 packages:
 - statsite
 

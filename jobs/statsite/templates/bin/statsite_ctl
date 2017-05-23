@@ -9,19 +9,24 @@ CONFIG_DIR=/var/vcap/jobs/statsite/config
 PIDFILE=/var/vcap/sys/run/statsite/statsite.pid
 PID_DIR=/var/vcap/sys/run/statsite/
 STATSITE_BINARY=/var/vcap/packages/statsite/statsite
+LOG_DIR=/var/vcap/sys/log/statsite
 
+source /var/vcap/jobs/statsite/helpers/ctl_setup.sh 'statsite'
 
 case $1 in
 
   start)
 
-
-    if [[ -f $PIDFILE ]]; then
-            kill -9 `cat $PIDFILE`
-    fi
+    pid_guard $PIDFILE "statsite"
 
     mkdir -p $PID_DIR
+    mkdir -p $LOG_DIR
     chown -R vcap:vcap $PID_DIR
+    chown -R vcap:vcap $LOG_DIR
+
+    #tee_output_to_sys_log "${LOG_DIR}"
+
+    echo $$ > /var/vcap/sys/run/statsite/statsite.pid
 
     exec $STATSITE_BINARY 
     #exec ./statsite -f $JOB_DIR/config/statsite.conf \
