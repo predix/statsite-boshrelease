@@ -11,7 +11,7 @@ PID_DIR=/var/vcap/sys/run/statsite/
 STATSITE_BINARY=/var/vcap/packages/statsite/statsite
 LOG_DIR=/var/vcap/sys/log/statsite
 
-export JOB_DIR=/var/vcap/jobs/$JOB_NAME
+export JOB_DIR=/var/vcap/jobs/statsite
 source /var/vcap/jobs/statsite/helpers/ctl_setup.sh 'statsite'
 
 case $1 in
@@ -25,14 +25,11 @@ case $1 in
     chown -R vcap:vcap $PID_DIR
     chown -R vcap:vcap $LOG_DIR
 
-    #tee_output_to_sys_log "${LOG_DIR}"
-
     echo $$ > /var/vcap/sys/run/statsite/statsite.pid
 
     sed -i -e 's/NEWRELIC_ACCOUNT_ID/<%=properties.newrelic.account_id %>/g' $JOB_DIR/helpers/statsite-newrelic-sink.py
     sed -i -e 's/NEWRELIC_API_KEY/<%=properties.newrelic.api_key %>/g' $JOB_DIR/helpers/statsite-newrelic-sink.py
 
-    #exec $STATSITE_BINARY 
     exec $STATSITE_BINARY -f $JOB_DIR/config/statsite.conf
 
     STATSITE_PID=`ps -ef | grep "statsite" | grep -v grep | awk '{print $2}' `
