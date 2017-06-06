@@ -2,6 +2,10 @@
 set -e -x
 sudo apt-get -y update 
 sudo apt-get -y install dh-autoreconf
+sudo apt-get -y install python-pip
+sudo apt-get -y install python3-pip
+sudo pip install requests --upgrade
+cd statsite
 tar -zxvf statsite.tgz
 cd statsite
 ./autogen.sh

@@ -4,7 +4,13 @@ templates:
   bin/statsite_ctl: bin/statsite_ctl
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  helpers/statsite-newrelic-sink.py: helpers/statsite-newrelic-sink.py
   data/properties.sh.erb: data/properties.sh
+  config/statsite.conf: config/statsite.conf
 packages:
 - statsite
-
+properties:
+  newrelic.account_id:
+    description: "Newrelic sink account ID"
+  newrelic.api_key:
+    description: "Newrelic sink api key"

@@ -4,4 +4,4 @@ name: statsite
 dependencies:
 
 files:
-  - statsite.tgz
+  - statsite/statsite.tgz

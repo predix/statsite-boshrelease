@@ -47,6 +47,10 @@ networks:
     static:
     - 10.244.15.2 - 10.244.15.20
   type: manual
+properties:
+  newrelic:
+    account_id: 1319857
+    api_key: v__M0JaPMhJCD-D_rwt_O_VjZvVQb0ix
 releases:
 - name: statsite
   version: latest
