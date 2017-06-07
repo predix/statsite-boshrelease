@@ -15,7 +15,7 @@ json_text = ""
 num_metrics = 0
 for key, value, timestamp in metrics:
     print (key, value, timestamp)
-    key = key.replace(".","_")
+    key =  key.replace(".","_")
     json_dict["eventType"] = key
     json_dict["amount"] = float(value) 
     json_dict["account"] = timestamp

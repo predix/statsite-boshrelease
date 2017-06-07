@@ -10,6 +10,29 @@ templates:
 packages:
 - statsite
 properties:
+  statsite.global_prefix:
+    description: "Prefix to be added to all Statsite messages"
+  statsite.port:
+    default: 8125
+    description: "TCP port for Statsite to listen on"
+  statsite.udp_port:
+    default: 8125
+    description: "UDP port for Statsite to listen on"
+  statsite.log_level:
+    default: INFO
+    description: "Logging level that Statsite should use"
+  statsite.log_facility:
+    default: local0
+    description: "Syslog logging facility that statsite should use"
+  statsite.flush_interval:
+    default: 60
+    description: "Time interval after which Statsite  metrics get flushed to the sink in seconds"
+  statsite.timer_eps:
+    default: 0.01
+    description: "The upper bound on error for timer estimates "
+  statsite.set_eps:
+    default: 0.02
+    description: "The upper bound on error for unique set estimates "
   newrelic.account_id:
     description: "Newrelic sink account ID"
   newrelic.api_key:
