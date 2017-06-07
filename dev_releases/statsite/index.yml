@@ -110,4 +110,14 @@ builds:
     version: 0+dev.54
   9faeb633-a1a5-4548-ad72-8948c82b9abc:
     version: 0+dev.55
+  3b71cf00-b10a-4d83-bf44-63664c69f26e:
+    version: 0+dev.56
+  adffbece-3818-4bbb-bb3b-8321c946aa91:
+    version: 0+dev.57
+  b845e2b8-cb51-4d0b-a619-25deb4e2c36a:
+    version: 0+dev.58
+  cab9d1a5-2e75-4de8-9061-cc1621cfb231:
+    version: 0+dev.59
+  7c74af12-6400-4b6c-988e-460133159b28:
+    version: 0+dev.60
 format-version: '2'

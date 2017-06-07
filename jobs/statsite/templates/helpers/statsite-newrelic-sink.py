@@ -20,7 +20,7 @@ for key, value, timestamp in metrics:
     json_dict["amount"] = float(value) 
     json_dict["account"] = timestamp
     json_text += json.JSONEncoder().encode(json_dict) + "," + "\n"
-    num_metrics++
+    num_metrics += 1
 
 json_text = "[" + json_text + "]"
 
@@ -30,6 +30,9 @@ if num_metrics > 0:
     headers = {"Content-Type": "application/json", "X-Insert-Key": "NEWRELIC_API_KEY"}
     try:
         res = requests.post(url, data=payload, headers=headers)
+        print ("Number of metrics sent to Newrelic:")
+        print (num_metrics)
+        print (res)
     except requests.exceptions.RequestException as e:
         print (e)
         sys.exit(1)
