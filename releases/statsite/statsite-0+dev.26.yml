@@ -1,0 +1,16 @@
+---
+packages:
+- name: statsite
+  version: 622b8512d42f8d739d49103e9435dc6374b11f92
+  fingerprint: 622b8512d42f8d739d49103e9435dc6374b11f92
+  sha1: 437160b5f1c4fbe49fea3ba0154dabaf40159703
+  dependencies: []
+jobs:
+- name: statsite
+  version: 27fd02a86519627bcddcbf11e694aed666e243d7
+  fingerprint: 27fd02a86519627bcddcbf11e694aed666e243d7
+  sha1: bbb5dece8f306077a37ed9c98d5d584333cc377d
+commit_hash: 914ee22a
+uncommitted_changes: true
+name: statsite
+version: 0+dev.26
