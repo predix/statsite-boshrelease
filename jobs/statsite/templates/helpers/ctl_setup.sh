@@ -64,6 +64,17 @@ then
   export PYTHONPATH=$WEBAPP_DIR/vendor/lib/python
 fi
 
+# Check if python3 is Installed
+which pip3 requests
+if [ $? == 1 ]; then
+  echo "Installing python3"
+  sudo apt-get -y install python3-pip
+  echo "Installed python3 successfully"
+  echo "Installing requests"
+  pip3 install requests
+  echo "Installed requests successfully"
+fi
+
 if [[ -d /var/vcap/packages/java7 ]]
 then
   export JAVA_HOME="/var/vcap/packages/java7"
