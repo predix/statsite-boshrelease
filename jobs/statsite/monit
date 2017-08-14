@@ -1,5 +1,5 @@
 check process statsite
   with pidfile /var/vcap/sys/run/statsite/statsite.pid
-  start program /var/vcap/jobs/statsite/bin/statsite_ctl start
-  stop program /var/vcap/jobs/statsite/bin/statsite_ctl stop
+  start program "/var/vcap/jobs/statsite/bin/statsite_ctl start"
+  stop program "/var/vcap/jobs/statsite/bin/statsite_ctl stop"
   group vcap

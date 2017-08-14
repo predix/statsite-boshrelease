@@ -138,6 +138,4 @@ builds:
     version: 0+dev.68
   f346d484-607f-4f7a-832e-316bf1e27287:
     version: 0.8.1
-  9261a6c2-ba7e-4c80-827d-331468886bd5:
-    version: 0.8.1+dev.1
 format-version: '2'

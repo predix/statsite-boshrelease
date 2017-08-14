@@ -8,24 +8,40 @@ export LANG=en_US.UTF-8
 CONFIG_DIR=/var/vcap/jobs/statsite/config
 PIDFILE=/var/vcap/sys/run/statsite/statsite.pid
 PID_DIR=/var/vcap/sys/run/statsite/
+STATSITE_BINARY=/var/vcap/packages/statsite/statsite
+LOG_DIR=/var/vcap/sys/log/statsite
 
-mkdir -p $PID_DIR
-chown -R vcap:vcap $PID_DIR 
+export JOB_DIR=/var/vcap/jobs/statsite
+source /var/vcap/jobs/statsite/helpers/ctl_setup.sh 'statsite'
 
 case $1 in
 
   start)
 
-    if [[ -f $PIDFILE ]]; then
-            kill -9 `cat $PIDFILE`
-    fi
+    pid_guard $PIDFILE "statsite"
 
-    exec /var/vcap/packages/statsite/bin/statsite 
-    #exec ./statsite -f $JOB_DIR/config/statsite.conf \
-         #>>$LOG_DIR/$JOB_NAME.log
+    mkdir -p $PID_DIR
+    mkdir -p $LOG_DIR
+    chown -R vcap:vcap $PID_DIR
+    chown -R vcap:vcap $LOG_DIR
+
+    echo $$ > /var/vcap/sys/run/statsite/statsite.pid
+
+    sed -i -e 's/STATSITE_GLOBAL_PREFIX/<%=properties.statsite.global_prefix %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_TCP_PORT/<%=properties.statsite.port %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_UDP_PORT/<%=properties.statsite.udp_port %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_LOG_LEVEL/<%=properties.statsite.log_level %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_LOG_FACILITY/<%=properties.statsite.log_facility %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_FLUSH_INTERVAL/<%=properties.statsite.flush_interval %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_TIMER_EPS/<%=properties.statsite.timer_eps %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/STATSITE_SET_EPS/<%=properties.statsite.set_eps %>/g' $JOB_DIR/config/statsite.conf
+    sed -i -e 's/NEWRELIC_ACCOUNT_ID/<%=properties.newrelic.account_id %>/g' $JOB_DIR/helpers/statsite-newrelic-sink.py
+    sed -i -e 's/NEWRELIC_API_KEY/<%=properties.newrelic.api_key %>/g' $JOB_DIR/helpers/statsite-newrelic-sink.py
+
+    exec $STATSITE_BINARY -f $JOB_DIR/config/statsite.conf
 
     STATSITE_PID=`ps -ef | grep "statsite" | grep -v grep | awk '{print $2}' `
-        echo $STATSITE_PID > $PIDFILE
+    echo $STATSITE_PID > $PIDFILE
 
     ;;
 
