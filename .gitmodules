@@ -1,0 +1,3 @@
+[submodule "src/github.com/statsite"]
+	path = src/github.com/statsite
+	url = https://github.com/statsite/statsite.git

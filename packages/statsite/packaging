@@ -1,15 +1,15 @@
 # abort script on any command that exits with a non zero value
 set -e -x
-sudo apt-get -y update 
-sudo apt-get -y install dh-autoreconf
-sudo apt-get -y install python-pip
+sudo apt-get -y update
+sudo apt-get -y install build-essential libtool autoconf automake scons python-setuptools lsof git texlive check
+sudo apt-get install pkg-config
+sudo easy_install pip
 sudo apt-get -y install python3-pip
-sudo pip install requests --upgrade
-cd statsite
-tar -zxvf statsite.tgz
-cd statsite
-./autogen.sh
-./configure
-make
-cp statsite ${BOSH_INSTALL_TARGET}
+sudo pip3 install requests
 
+cd github.com/statsite
+
+sudo ./autogen.sh
+sudo ./configure --prefix=${BOSH_INSTALL_TARGET}
+sudo make
+sudo make install

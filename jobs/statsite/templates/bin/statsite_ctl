@@ -8,7 +8,7 @@ export LANG=en_US.UTF-8
 CONFIG_DIR=/var/vcap/jobs/statsite/config
 PIDFILE=/var/vcap/sys/run/statsite/statsite.pid
 PID_DIR=/var/vcap/sys/run/statsite/
-STATSITE_BINARY=/var/vcap/packages/statsite/statsite
+STATSITE_BINARY=/var/vcap/packages/statsite/bin/statsite
 LOG_DIR=/var/vcap/sys/log/statsite
 
 export JOB_DIR=/var/vcap/jobs/statsite
