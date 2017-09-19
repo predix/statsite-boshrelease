@@ -10,6 +10,9 @@ templates:
 packages:
 - statsite
 properties:
+  statsite.bind_address:
+    default: 127.0.0.1
+    description: "Statsite bind address"
   statsite.global_prefix:
     description: "Prefix to be added to all Statsite messages"
   statsite.port:

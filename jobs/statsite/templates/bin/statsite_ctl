@@ -27,6 +27,7 @@ case $1 in
 
     echo $$ > /var/vcap/sys/run/statsite/statsite.pid
 
+    sed -i -e 's/STATSITE_BIND_ADDRESS/<%=properties.statsite.bind_address %>/g' $JOB_DIR/config/statsite.conf
     sed -i -e 's/STATSITE_GLOBAL_PREFIX/<%=properties.statsite.global_prefix %>/g' $JOB_DIR/config/statsite.conf
     sed -i -e 's/STATSITE_TCP_PORT/<%=properties.statsite.port %>/g' $JOB_DIR/config/statsite.conf
     sed -i -e 's/STATSITE_UDP_PORT/<%=properties.statsite.udp_port %>/g' $JOB_DIR/config/statsite.conf

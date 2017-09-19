@@ -49,6 +49,7 @@ networks:
   type: manual
 properties:
   statsite:
+    bind_address: 127.0.0.1
     global_prefix: bosh_lite_
     port: 8125
     udp_port: 8125
