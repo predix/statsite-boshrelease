@@ -1,12 +1,12 @@
 ---
 name: statsite
 templates:
-  bin/statsite_ctl: bin/statsite_ctl
-  helpers/ctl_setup.sh: helpers/ctl_setup.sh
-  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  bin/statsite_ctl.erb: bin/statsite_ctl
+  helpers/ctl_setup.sh.erb: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh.erb: helpers/ctl_utils.sh
   helpers/statsite-newrelic-sink.py: helpers/statsite-newrelic-sink.py
   data/properties.sh.erb: data/properties.sh
-  config/statsite.conf: config/statsite.conf
+  config/statsite.conf.erb: config/statsite.conf
 packages:
 - statsite
 properties:
