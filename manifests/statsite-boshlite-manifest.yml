@@ -58,9 +58,6 @@ properties:
     flush_interval: 60
     timer_eps: 0.01
     set_eps: 0.02
-  newrelic:
-    account_id: 1319857
-    api_key: v__M0JaPMhJCD-D_rwt_O_VjZvVQb0ix
 releases:
 - name: statsite
   version: latest
